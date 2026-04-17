@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mouli Ballanki | Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #121933;
+      --card: rgba(255,255,255,0.06);
+      --text: #e5ecff;
+      --muted: #a7b3d1;
+      --line: rgba(255,255,255,0.12);
+      --primary: #6ea8fe;
+      --accent: #7ef0c2;
+      --shadow: 0 24px 80px rgba(0,0,0,0.28);
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(110,168,254,0.18), transparent 30%),
+        radial-gradient(circle at top right, rgba(126,240,194,0.14), transparent 25%),
+        linear-gradient(180deg, #0b1020 0%, #0f1530 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container { width: min(100% - 2rem, var(--max)); margin: 0 auto; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(11,16,32,0.7);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: white;
+    }
+
+    .brand span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    .hero {
+      padding: 5rem 0 3.5rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.9rem;
+      border: 1px solid rgba(126,240,194,0.3);
+      background: rgba(126,240,194,0.08);
+      color: var(--accent);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      line-height: 1.02;
+      margin-bottom: 1rem;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 60ch;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.25rem;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: 0.25s ease;
+      border: 1px solid var(--line);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--primary), #4f7cff);
+      color: #08111f;
+      border: none;
+      box-shadow: var(--shadow);
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-card, .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 1.4rem;
+    }
+
+    .hero-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .stat {
+      padding: 1rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.3rem;
+      color: white;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    section { padding: 1.6rem 0 0.5rem; }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .section-title h2 {
+      font-size: 1.7rem;
+      letter-spacing: -0.03em;
+    }
+
+    .section-title::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: var(--line);
+    }
+
+    .about-grid, .skills-grid, .projects-grid {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .about-grid { grid-template-columns: 1.3fr 0.7fr; }
+    .skills-grid { grid-template-columns: repeat(3, 1fr); }
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .card { padding: 1.4rem; }
+
+    .card p { color: var(--muted); }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .chip {
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #dce5ff;
+      font-size: 0.92rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 1rem;
+      padding: 1.2rem;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .timeline-date {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .timeline-item h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .timeline-item .company {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+      display: block;
+    }
+
+    .timeline-item ul {
+      padding-left: 1.1rem;
+      color: var(--muted);
+    }
+
+    .timeline-item li + li { margin-top: 0.45rem; }
+
+    .project-card h3 { margin-bottom: 0.4rem; }
+    .project-card p { margin-bottom: 1rem; }
+    .project-top {
+      display: inline-flex;
+      margin-bottom: 0.85rem;
+      font-size: 0.82rem;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(110,168,254,0.12);
+      color: var(--primary);
+      border: 1px solid rgba(110,168,254,0.2);
+    }
+
+    .contact {
+      margin: 2.5rem 0 3rem;
+      padding: 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(110,168,254,0.18), rgba(126,240,194,0.1));
+      border-radius: 28px;
+      border: 1px solid var(--line);
+    }
+
+    .contact p {
+      color: var(--muted);
+      margin: 0.8rem auto 1.4rem;
+      max-width: 55ch;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    footer {
+      padding: 0 0 2rem;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .about-grid,
+      .skills-grid,
+      .projects-grid,
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .hero { padding-top: 3.5rem; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .stats { grid-template-columns: 1fr; }
+      .container { width: min(100% - 1.2rem, var(--max)); }
+      .contact { padding: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a href="#home" class="brand">Mouli<span>.dev</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="hero" id="home">
+      <div>
+        <div class="badge">Software Engineer • Laravel • Spring Boot • Cloud</div>
+        <h1>Building scalable products with clean backend systems and practical UI.</h1>
+        <p>
+          I'm Mouli Ballanki, a software engineer based in Vizianagaram, focused on Laravel microservices,
+          Java Spring Boot, cloud platforms, and reliable product development. I enjoy turning business needs
+          into maintainable systems that improve performance, user experience, and delivery speed.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#projects">See My Work</a>
+          <a class="btn" href="mailto:mouliballanki143@gmail.com">Email Me</a>
+        </div>
+        <div class="hero-meta">
+          <span>📍 Vizianagaram, Andhra Pradesh</span>
+          <span>📞 +91 9912820244</span>
+          <span>✉️ mouliballanki143@gmail.com</span>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h3>Quick Snapshot</h3>
+        <div class="stats">
+          <div class="stat">
+            <strong>2+ Years</strong>
+            <span>Professional experience</span>
+          </div>
+          <div class="stat">
+            <strong>12 Microservices</strong>
+            <span>Built in Loqbox architecture</span>
+          </div>
+          <div class="stat">
+            <strong>Laravel + GCP</strong>
+            <span>Production project experience</span>
+          </div>
+          <div class="stat">
+            <strong>8.3 GPA</strong>
+            <span>B.Tech CSE, RGUKT Nuzvid</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="about">
+      <div class="section-title"><h2>About Me</h2></div>
+      <div class="about-grid">
+        <div class="card">
+          <p>
+            I currently work as a Software Engineer at Sails Software Solutions, where I contribute to financial
+            and claims-based applications. My work includes developing Laravel microservices, integrating external
+            systems, improving database query performance, and supporting cloud-native deployments.
+          </p>
+          <div class="chips">
+            <span class="chip">Laravel</span>
+            <span class="chip">Java Spring Boot</span>
+            <span class="chip">Python</span>
+            <span class="chip">AWS</span>
+            <span class="chip">Google Cloud</span>
+            <span class="chip">Kubernetes</span>
+            <span class="chip">Git & GitHub</span>
+            <span class="chip">DSA</span>
+          </div>
+        </div>
+        <div class="card">
+          <p><strong style="color:white;display:block;margin-bottom:0.6rem;">Education</strong></p>
+          <p>B.Tech in CSE — RGUKT Nuzvid — 8.3 GPA</p>
+          <p style="margin-top:0.8rem;">PUC — RGUKT Nuzvid — 8.3 GPA</p>
+          <p style="margin-top:0.8rem;">SSC — ZPHS Vasantha — 9.7 GPA</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="section-title"><h2>Experience</h2></div>
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="timeline-date">Nov 2023 — Present</div>
+          <div>
+            <h3>Software Engineer</h3>
+            <span class="company">Sails Software Solutions</span>
+            <ul>
+              <li>Worked on Loqbox, a UK financial services platform focused on credit score improvement and savings.</li>
+              <li>Designed and implemented 12 microservices, including Customer, Admin, Finance, CRA, and Open Banking modules.</li>
+              <li>Used Laravel concepts such as jobs, commands, eager loading, lazy loading, and performance optimization techniques.</li>
+              <li>Improved database efficiency with indexing and caching strategies.</li>
+              <li>Supported Kubernetes-based monitoring and observability using k9s.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-date">Jun 2022 — Oct 2023</div>
+          <div>
+            <h3>Associate Software Engineer</h3>
+            <span class="company">Sails Software Solutions</span>
+            <ul>
+              <li>Built unemployment claims workflows using Laravel and Google Cloud.</li>
+              <li>Worked on claims processing systems involving data handling, validation, and response flows.</li>
+              <li>Contributed to both backend logic and selected frontend layouts.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-date">Mar 2021 — May 2021</div>
+          <div>
+            <h3>API Developer Intern</h3>
+            <span class="company">Sails Software Solutions</span>
+            <ul>
+              <li>Worked on Coindock, a crypto wallet aggregation application.</li>
+              <li>Helped develop API features for combining balances from multiple wallets in one place.</li>
+              <li>Supported currency views and wallet-based data handling.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-title"><h2>Skills</h2></div>
+      <div class="skills-grid">
+        <div class="card">
+          <h3 style="margin-bottom:1rem;">Backend</h3>
+          <div class="chips">
+            <span class="chip">PHP</span>
+            <span class="chip">Laravel</span>
+            <span class="chip">Java</span>
+            <span class="chip">Spring Boot</span>
+            <span class="chip">Python</span>
+            <span class="chip">C#</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:1rem;">Frontend</h3>
+          <div class="chips">
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">Bootstrap</span>
+            <span class="chip">Tailwind CSS</span>
+            <span class="chip">Responsive UI</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:1rem;">Cloud & Tools</h3>
+          <div class="chips">
+            <span class="chip">AWS</span>
+            <span class="chip">Google Cloud</span>
+            <span class="chip">Kubernetes</span>
+            <span class="chip">Git</span>
+            <span class="chip">GitHub</span>
+            <span class="chip">Algorithms</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-title"><h2>Featured Projects</h2></div>
+      <div class="projects-grid">
+        <article class="card project-card">
+          <span class="project-top">Financial Platform</span>
+          <h3>Loqbox</h3>
+          <p>
+            Contributed to a financial services ecosystem that helps users build credit scores through savings,
+            rent reporting, and financial guidance. Built and maintained core microservices and improved performance.
+          </p>
+          <div class="chips">
+            <span class="chip">Laravel</span>
+            <span class="chip">Microservices</span>
+            <span class="chip">AWS SSO</span>
+            <span class="chip">Caching</span>
+          </div>
+        </article>
+
+        <article class="card project-card">
+          <span class="project-top">Claims Processing</span>
+          <h3>NASWA / Unemployment Claims</h3>
+          <p>
+            Worked on claim ingestion, validation, decision-making, and response workflows involving cloud storage,
+            state-based processing, and API-driven integrations.
+          </p>
+          <div class="chips">
+            <span class="chip">Laravel</span>
+            <span class="chip">Google Cloud</span>
+            <span class="chip">Workflow Logic</span>
+            <span class="chip">APIs</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Let’s Build Something Useful</h2>
+      <p>
+        I’m open to software engineering opportunities, freelance backend work, and collaboration on web products.
+        Replace the links below with your real profiles before publishing.
+      </p>
+      <div class="contact-links">
+        <a class="btn primary" href="mailto:mouliballanki143@gmail.com">Send Email</a>
+        <a class="btn" href="https://github.com/yourusername" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/yourusername/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn" href="#home">Back to Top</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 Mouli Ballanki • Built as a personal portfolio website.</div>
+  </footer>
+</body>
+</html>
