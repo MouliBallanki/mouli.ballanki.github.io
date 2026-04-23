@@ -3,7 +3,7 @@
 This is my personal portfolio website showcasing my skills, experience, and projects as a Software Engineer.
 
 ## 🚀 Live Website
-👉 mouli-ballanki-github-io.vercel.app
+👉 https://mouli-ballanki-github-io.vercel.app
 
 ---
 
